@@ -1,0 +1,42 @@
+<%= form_with(model: work_shift, local: true) do |form| %>
+  <% if work_shift.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(work_shift.errors.count, "error") %> prohibited this work_shift from being saved:</h2>
+
+      <ul>
+      <% work_shift.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.number_field :employee_id, id: :work_shift_employee_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rate_id %>
+    <%= form.number_field :rate_id, id: :work_shift_rate_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.number_field :location_id, id: :work_shift_location_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time, id: :work_shift_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time, id: :work_shift_end_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
