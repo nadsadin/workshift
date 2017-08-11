@@ -5,10 +5,8 @@ class ReportsController < ApplicationController
 
   def employee_total
     @report = Report.new(report_params)
-    @users = User.all
-    @workshifts ||= []
-    @users.each
-    @workshift = WorkShift.where("start_time>=? and end_time<=?",@report.start_time,@report.end_time)
+    @employees = Employee.all
+    @workshift = WorkShift.where("start_time>=? and end_time<=?",@report.start_date,@report.end_date).order(:employee_id)
 
   end
 

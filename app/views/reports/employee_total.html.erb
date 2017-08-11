@@ -1,5 +1,23 @@
 <h1>Reports</h1>
 <%= render 'form_em_total' %>
-
-<%= @report.start_date %><br>
+<p>Start date
+<%= @report.start_date %> End date
 <%= @report.end_date %>
+</p>
+<table class="table">
+  <thead class="thead-default">
+  <tr>
+    <th>Employee</th>
+    <th>Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @employees.each do |em| %>
+  <tr>
+    <td><%= em.name %></td>
+    <td><%= w = em.work_shifts.where("start_time>=? and end_time<=?",@report.start_date,@report.end_date).sum('cost').floor(2) %>
+    </td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
