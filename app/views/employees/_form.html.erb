@@ -1,4 +1,4 @@
-<%= form_with(model: employee, local: true) do |form| %>
+<%= form_for @employee  do |form| %>
   <% if employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
@@ -11,14 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name %>
+    <%= form.text_field :name, id: :employee_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= form.label :surname %>
-    <%= form.text_field :surname, id: :employee_surname %>
+    <%= form.text_field :surname, id: :employee_surname, class: 'form-control' %>
+  </div>
+
+  <div class="form-group" id="employee_rates">
+    <%= form.fields_for :employee_rates do |er| %>
+        <%= render 'employee_rate_fields', f: er %>
+    <% end %>
+    <%= link_to_add_association 'Add rate', form, :employee_rates %>
+
   </div>
 
   <div class="actions">

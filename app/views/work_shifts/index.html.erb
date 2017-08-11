@@ -2,14 +2,16 @@
 
 <h1>Work Shifts</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-default">
     <tr>
       <th>Employee</th>
-      <th>Rate id integer</th>
+      <th>Rate</th>
       <th>Location</th>
       <th>Start time</th>
       <th>End time</th>
+      <th>Total time</th>
+      <th>Cost</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +19,14 @@
   <tbody>
     <% @work_shifts.each do |work_shift| %>
       <tr>
-        <td><%= work_shift.employee_id %></td>
-        <td><%= work_shift.rate_id %></td>
-        <td><%= work_shift.location_id %></td>
-        <td><%= work_shift.start_time %></td>
-        <td><%= work_shift.end_time %></td>
+        <td><%= work_shift.employee.name %></td>
+        <td><%= work_shift.rate.rate %></td>
+        <td><%= work_shift.location.name %></td>
+        <td><%= work_shift.start_time.to_formatted_s(:short) %></td>
+        <td><%= work_shift.end_time.to_formatted_s(:short) %></td>
+        <td><%= work_shift.min/60 %>:<%= work_shift.min%60 %>
+        </td>
+        <td><%= work_shift.cost.floor(2) %></td>
         <td><%= link_to 'Show', work_shift %></td>
         <td><%= link_to 'Edit', edit_work_shift_path(work_shift) %></td>
         <td><%= link_to 'Destroy', work_shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>

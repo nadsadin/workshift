@@ -1,0 +1,9 @@
+<%= form_for @report, :url => {:action => "employee_total"}, :method => "get" do |f| %>
+    <%= f.label :start_date, 'Start' %>
+    <%= f.date_select :start_date %>
+
+    <%= f.label :end_date, 'End' %>
+    <%= f.date_select :end_date %>
+
+    <%= f.submit 'Search' %>
+<% end %>

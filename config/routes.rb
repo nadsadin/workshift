@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  get 'reports/index'
+
+  get 'reports/employee_total'
+
+  get 'reports/employee_detail'
+
+  get 'reports/location_total'
+
+  get 'reports/location_detail'
+
+  resources :expenses
   get 'home/show'
   root 'home#show'
   resources :work_shifts

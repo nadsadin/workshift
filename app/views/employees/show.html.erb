@@ -9,6 +9,13 @@
   <strong>Surname:</strong>
   <%= @employee.surname %>
 </p>
+<p>
+  <strong>Rates</strong><br>
+  <% @employee.rates.each do |r| %>
+    <%= r.rate %>
+      <br>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

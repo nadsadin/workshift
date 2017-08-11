@@ -1,0 +1,5 @@
+<div class="nested-fields">
+  <%= f.label :rate_id %>
+<%= f.collection_select(:rate_id, Rate.all, :id, :rate) %>
+<%= link_to_remove_association "X", f, class: 'btn btn-primary' %>
+</div>

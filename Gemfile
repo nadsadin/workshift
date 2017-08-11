@@ -35,8 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 # bootstrap 4
 gem 'bootstrap', '~> 4.0.0.alpha6'
-# ancestry for tree view
-gem 'ancestry'
+
+# nested atributes
+gem 'cocoon'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

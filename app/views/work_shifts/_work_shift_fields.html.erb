@@ -1,0 +1,24 @@
+<tr class="repeated-fields">
+  <% time = Time.new %>
+  <td>
+    <%= f.collection_select :employee_id, Employee.all, :id, :name, {}, {class: "employee", name: "work_shift[work_shifts][][employee_id]", id: "employee_id"+time.to_formatted_s(:number)}  %>
+  </td>
+  <td>
+    <%= f.collection_select :rate_id, Rate.all, :id, :rate, {}, {class: "rate", name: "work_shift[work_shifts][][rate_id]", id: "rate_id"+time.to_formatted_s(:number)}  %>
+  </td>
+  <td>
+    <%= f.collection_select(:location_id, Location.all, :id, :name, {}, {class: "location", name: "work_shift[work_shifts][][location_id]", id: "location_id"+time.to_formatted_s(:number)})  %>
+  </td>
+  <td>
+    <%= f.datetime_select :start_time, {class: "start_time", id: "start_time"+time.to_formatted_s(:number)} %>
+  </td>
+  <td>
+    <%= f.datetime_select :end_time, discard_year: true, html: {'class' => "end_time", 'id' => "end_time"+time.to_formatted_s(:number)} %>
+  </td>
+
+  <td>
+    <%= link_to_remove_association "X", f, class: 'btn btn-primary', wrapper_class: 'repeated-fields' %>
+  </td>
+</tr>
+
+

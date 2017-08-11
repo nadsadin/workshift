@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :employee_id %>
-    <%= form.number_field :employee_id, id: :work_shift_employee_id %>
+    <%= form.collection_select :employee_id, Employee.all, :id, :name %>
   </div>
 
   <div class="field">
     <%= form.label :rate_id %>
-    <%= form.number_field :rate_id, id: :work_shift_rate_id %>
+    <%= form.collection_select :rate_id, Rate.all, :id, :rate %>
   </div>
 
   <div class="field">
     <%= form.label :location_id %>
-    <%= form.number_field :location_id, id: :work_shift_location_id %>
+    <%= form.collection_select :location_id, Location.all, :id, :name %>
   </div>
 
   <div class="field">

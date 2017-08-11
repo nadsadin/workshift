@@ -2,27 +2,27 @@
 
 <p>
   <strong>Employee:</strong>
-  <%= @work_shift.employee_id %>
+  <%= @work_shift.employee.name %>
 </p>
 
 <p>
   <strong>Rate id integer:</strong>
-  <%= @work_shift.rate_id %>
+  <%= @work_shift.rate.rate %>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= @work_shift.location_id %>
+  <%= @work_shift.location.name %>
 </p>
 
 <p>
   <strong>Start time:</strong>
-  <%= @work_shift.start_time %>
+  <%= @work_shift.start_time.to_formatted_s(:short) %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @work_shift.end_time %>
+  <%= @work_shift.end_time.to_formatted_s(:short) %>
 </p>
 
 <%= link_to 'Edit', edit_work_shift_path(@work_shift) %> |
