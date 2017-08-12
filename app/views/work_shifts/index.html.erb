@@ -21,7 +21,7 @@
       <tr>
         <td><%= work_shift.employee.name %></td>
         <td><%= work_shift.rate.rate %></td>
-        <td><%= work_shift.location.name %></td>
+        <td><%= work_shift.location.name %><br><%= work_shift.memo %></td>
         <td><%= work_shift.start_time.to_formatted_s(:short) %></td>
         <td><%= work_shift.end_time.to_formatted_s(:short) %></td>
         <td><%= work_shift.min/60 %>:<%= work_shift.min%60 %>

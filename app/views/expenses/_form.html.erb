@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :employee_id %>
     <%= form.collection_select :employee_id, Employee.all, :id, :name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date %>
     <%= form.date_select :date, id: :expense_date, discard_year: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :amount %>
     <%= form.text_field :amount, id: :expense_amount %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :memo %>
     <%= form.text_area :memo, id: :expense_memo %>
   </div>

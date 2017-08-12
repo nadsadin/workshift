@@ -1,7 +1,7 @@
 class WorkShift < ApplicationRecord
-  belongs_to :employee
-  belongs_to :rate
-  belongs_to :location
+  belongs_to :employee, inverse_of: :work_shifts
+  belongs_to :rate, inverse_of: :work_shifts
+  belongs_to :location, inverse_of: :work_shifts
 
 
   before_save do

@@ -11,29 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :employee_id %>
-    <%= form.collection_select :employee_id, Employee.all, :id, :name %>
-  </div>
+  <div class="form-group row">
+      <%= form.label :employee_id, class: "col-md-5" %>
 
-  <div class="field">
-    <%= form.label :rate_id %>
-    <%= form.collection_select :rate_id, Rate.all, :id, :rate %>
-  </div>
+      <%= form.label :rate_id, class: "col-md-1" %>
 
-  <div class="field">
-    <%= form.label :location_id %>
-    <%= form.collection_select :location_id, Location.all, :id, :name %>
-  </div>
+      <%= form.label :location_id, class: "col-md-6" %>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :work_shift_start_time %>
-  </div>
+      <%= form.collection_select :employee_id, Employee.all, :id, :name, {}, {class: "form-control col-md-5"} %>
+      <%= form.collection_select :rate_id, Rate.all, :id, :rate, {}, {class: "form-control col-md-1"} %>
+      <%= form.collection_select :location_id, Location.all, :id, :name, {}, {class: "form-control col-md-6"} %>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, id: :work_shift_end_time %>
+  </div>
+  <div class="form-group row">
+    <%= form.label :memo %>
+    <%= form.text_field :memo, class: "form-control" %>
+  </div>
+  <div class="form-group row">
+      <%= form.label :start_time, class: "col-md-6" %>
+      <%= form.label :end_time, class: "col-md-6" %>
+      <div class="col-md-6">
+        <div class="row">
+          <%= form.datetime_select :start_time,{}, {id: :work_shift_start_time, class: "form-control col-md-2"} %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <%= form.datetime_select :end_time,{}, {id: :work_shift_end_time, class: "form-control col-md-2"} %>
+        </div>
+      </div>
   </div>
 
   <div class="actions">

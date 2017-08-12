@@ -20,7 +20,7 @@
           <tr>
             <td><%= w.start_time.to_formatted_s(:short) %></td>
             <td><%= w.end_time.to_formatted_s(:short) %></td>
-            <td><%= w.location.name %><br></td>
+            <td><%= w.location.name %><br><%= w.memo %></td>
             <td><%= number_to_currency(w.rate.rate,:precision => 2) %></td>
             <td><%= w.min/60 %>:<%= sprintf '%02d', w.min%60 %></td>
             <td><%= number_to_currency(w.cost,:precision => 2) %></td>

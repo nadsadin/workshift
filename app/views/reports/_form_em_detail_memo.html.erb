@@ -1,4 +1,4 @@
-<%= form_for @report, :url => {:action => "employee_total"}, :method => "get" do |f| %>
+<%= form_for @report, :url => {:action => "employee_detail_memo"}, :method => "get" do |f| %>
     <div class="form-group row">
       <%= f.label :start_date, 'Start', class: "col-md-1" %>
       <%= f.date_select :start_date,with_css_classes: {year: "col-md-1", month: "col-md-2", day: "col-md-1"} %>
@@ -6,6 +6,7 @@
       <%= f.label :end_date, 'End', class: "col-md-1" %>
       <%= f.date_select :end_date, with_css_classes: {year: "col-md-1", month: "col-md-2", day: "col-md-1"} %>
     </div>
+
 
     <%= f.submit 'Search' %>
 <% end %>

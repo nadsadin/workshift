@@ -1,10 +1,7 @@
-<h1>Reports</h1>
+<h1>Employee total</h1>
 <%= render 'form_em_total' %>
-<p>Start date
-<%= @report.start_date %> End date
-<%= @report.end_date %>
-</p>
-<table class="table">
+
+<table class="table table-striped table-hover">
   <thead class="thead-default">
   <tr>
     <th>Employee</th>
@@ -15,9 +12,14 @@
   <% @employees.each do |em| %>
   <tr>
     <td><%= em.name %></td>
-    <td><%= w = em.work_shifts.where("start_time>=? and end_time<=?",@report.start_date,@report.end_date).sum('cost').floor(2) %>
+    <td><% w = (em.work_shifts.where("start_time>=? and start_time<=?",@report.start_date,@report.end_date+1).sum('cost')+em.expenses.where("date>=? and date<=?",@report.start_date,@report.end_date).sum('amount')) %>
+      <%= number_to_currency(w,:precision => 2) %>
     </td>
   </tr>
     <% end %>
+  <tr class="table-active">
+    <td><strong>Total</strong></td>
+    <td><strong><%= number_to_currency(@total,:precision => 2) %></strong></td>
+  </tr>
   </tbody>
 </table>
