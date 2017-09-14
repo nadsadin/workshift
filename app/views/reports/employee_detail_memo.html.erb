@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-    <% (@workshifts.where employee_id: em.id).each do |w| %>
+    <% (@workshifts.where employee_id: em.id).order(:start_time).each do |w| %>
           <tr>
             <td><%= w.start_time.to_formatted_s(:short) %></td>
             <td><%= w.end_time.to_formatted_s(:short) %></td>

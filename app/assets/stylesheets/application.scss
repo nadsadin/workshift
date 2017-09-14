@@ -15,3 +15,24 @@
  */
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap";
+
+@media print {
+  nav, form{
+    display: none!important;
+  }
+  h1{
+    font-size: 15px;
+  }
+  .container{
+    width: 100%;
+  }
+  h3, h4{
+    font-size: 14px;
+  }
+  table{
+    font-size: 12px;
+  }
+  .table th, .table td{
+    padding: 0px;
+  }
+}

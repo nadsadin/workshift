@@ -1,22 +1,22 @@
 <h1>Employee detail</h1>
-<%= render 'form_em_detail' %>
+<%= render 'form_emid_detail' %>
 
-<% @employees.each do |em| %>
-    <h3><%= em.name %></h3>
+
+    <h3><%= @employee.name %></h3>
     <h4>Work shift</h4>
     <table class="table table-striped table-hover">
       <thead class="thead-default">
-        <tr>
-          <th>Start</th>
-          <th>End</th>
-          <th>Location</th>
-          <th>Rate</th>
-          <th>Total Hours</th>
-          <th>Amount</th>
-        </tr>
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th>Location</th>
+        <th>Rate</th>
+        <th>Total Hours</th>
+        <th>Amount</th>
+      </tr>
       </thead>
       <tbody>
-    <% (@workshifts.where(employee_id: em.id).order(:start_time)).each do |w| %>
+      <% @workshifts.each do |w| %>
           <tr>
             <td><%= w.start_time.to_formatted_s(:short) %></td>
             <td><%= w.end_time.to_formatted_s(:short) %></td>
@@ -38,15 +38,14 @@
       </tr>
       </thead>
       <tbody>
-      <% (@expenses.where employee_id: em.id).each do |ex| %>
-        <tr>
-          <td><%= ex.date.to_formatted_s(:short) %></td>
-          <td><%= ex.memo %></td>
-          <td><%= number_to_currency(ex.amount,:precision => 2) %></td>
-        </tr>
+      <% @expenses.each do |ex| %>
+          <tr>
+            <td><%= ex.date.to_formatted_s(:short) %></td>
+            <td><%= ex.memo %></td>
+            <td><%= number_to_currency(ex.amount,:precision => 2) %></td>
+          </tr>
       <% end %>
       </tbody>
     </table>
-    <h4>Total: <%= number_to_currency(@workshifts.where("employee_id=?",em.id).sum('cost')+@expenses.where("employee_id=?",em.id).sum('amount'), :precision => 2) %></h4>
+    <h4>Total: <%= number_to_currency(@workshifts.sum('cost')+@expenses.sum('amount'), :precision => 2) %></h4>
     <hr>
-<% end %>
