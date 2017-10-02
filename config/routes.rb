@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'reports/employee_detail'
   get 'reports/employee_id_detail'
+  get 'reports/location_em_detail'
   get 'reports/employee_detail_memo'
 
   get 'reports/location_total'

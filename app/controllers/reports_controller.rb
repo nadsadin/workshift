@@ -37,11 +37,16 @@ class ReportsController < ApplicationController
     @workshifts = WorkShift.where("start_time>=? and end_time<=?",@report.start_date,@report.end_date+1)
     @locations = Location.where id: @workshifts.select(:location_id).group(:location_id)
   end
-
   def location_id_detail
     @location = Location.find(@report.location_id)
     @workshifts = WorkShift.where("start_time>=? and end_time<=? and location_id=?",@report.start_date,@report.end_date+1,@report.location_id).order(:start_time)
   end
+  def location_em_detail
+    @location = Location.find(@report.location_id)
+    @workshifts = WorkShift.where("start_time>=? and end_time<=? and location_id=?",@report.start_date,@report.end_date+1,@report.location_id)
+    @employees = Employee.where id: @workshifts.select(:employee_id).group(:employee_id)
+  end
+
 end
 
 

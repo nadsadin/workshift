@@ -1,0 +1,40 @@
+<h1>Employee detail</h1>
+<%= render 'form_location_em_detail' %>
+
+
+<h3><%= @location.name %></h3>
+
+<% @employees.each do |em| %>
+    <h3><%= em.name %></h3>
+    <h4>Work shift</h4>
+    <table class="table table-striped table-hover">
+      <thead class="thead-default">
+      <tr>
+        <th>Start</th>
+        <th>End</th>
+        <th>Location</th>
+        <th>Rate</th>
+        <th>Total Hours</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% (@workshifts.where(employee_id: em.id).order(:start_time)).each do |w| %>
+          <tr>
+            <td><%= w.start_time.to_formatted_s(:short) %></td>
+            <td><%= w.end_time.to_formatted_s(:short) %></td>
+            <td><%= w.location.name %><br><%= w.memo %></td>
+            <td><%= number_to_currency(w.rate.rate,:precision => 2) %></td>
+            <td><%= w.min/60 %>:<%= sprintf '%02d', w.min%60 %></td>
+            <td><%= number_to_currency(w.cost,:precision => 2) %></td>
+          </tr>
+      <% end %>
+      <tr>
+        <th colspan="4">Total</th>
+        <th><%= @workshifts.where("employee_id=?",em.id).sum('min')/60 %>:<%= sprintf '%02d', @workshifts.where("employee_id=?",em.id).sum('min')%60 %></th>
+        <th><%= number_to_currency(@workshifts.where("employee_id=?",em.id).sum('cost')) %></th>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+<% end %>
